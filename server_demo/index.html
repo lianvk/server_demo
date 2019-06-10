@@ -1,0 +1,215 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml"></html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Базовый шаблон | Starter Template for Bootstrap</title>
+    
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" >
+    <script src='js/jquery.js'></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=ac94352d-f4fd-48e2-9436-259015c369f1&lang=ru_RU" type="text/javascript">
+    </script>
+    <script type="text/javascript" src='js/main.js'></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <script src='js/popper.min.js'></script>
+    <script src='js/bootstrap.js'></script>
+    <script src='js/all.js'></script>
+  </head>
+
+  <body>
+    
+    <!-- Modal -->
+     <div id="dialog" title="Атрибуты" style="display:none">
+<form name="userForm">
+       <div class="form-group">
+            <label for="nummar">Номер маршрута:</label>
+            <input class="form-control" name="nummar" />
+        </div>
+        <div class="form-group">
+            <label for="balans">Баланс:</label>
+            <input class="form-control" name="balans" />
+        </div> 
+        <div class="form-group">
+            <label for="tip">Тип строения:</label>
+            <input class="form-control" name="tip" />
+        </div> 
+        <div class="form-group">
+            <label for="ich">Исполнительный чертеж:</label>
+            <input class="form-control" name="ich" />
+        </div> 
+        <button id="saving" type="button" class="btn btn-outline-info">Сохранить</button>
+        </form>
+    </div>
+
+    <div id="dialog_seg" title="Атрибуты сегмента" style="display:none">
+<form name="userForm_seg">
+       <div class="form-group">
+            <label for="nummar_seg">Номер маршрута:</label>
+            <input class="form-control" name="nummar_seg" />
+        </div>
+        <div class="form-group">
+            <label for="balans_seg">Баланс:</label>
+            <input class="form-control" name="balans_seg" />
+        </div> 
+        <div class="form-group">
+            <label for="tip_seg">Давление:</label>
+            <input class="form-control" name="tip_seg" />
+        </div> 
+        <div class="form-group">
+            <label for="mat_seg">Материал:</label>
+            <input class="form-control" name="mat_seg" />
+        </div> 
+         <div class="form-group">
+            <label for="d_seg">Диаметр (мм) :</label>
+            <input class="form-control" name="d_seg" />
+        </div> 
+        <div class="form-group">
+            <label for="ich_seg">Исполнительный чертеж:</label>
+            <input class="form-control" name="ich_seg" />
+        </div> 
+        <button id="saving_seg" type="button" class="btn btn-outline-info">Сохранить</button>
+        </form>
+    </div>
+
+    <div id="dialog_rp" title="Атрибуты" style="display:none">
+<form name="userForm">
+       <div class="form-group">
+            <label for="nummar_rp">Номер маршрута:</label>
+            <input class="form-control" name="nummar_rp" />
+        </div>
+        <div class="form-group">
+            <label for="balans_rp">Баланс:</label>
+            <input class="form-control" name="balans_rp" />
+        </div> 
+        <div class="form-group">
+            <label for="tip_rp">Тип:</label>
+            <input class="form-control" name="tip_rp" />
+        </div> 
+        <div class="form-group">
+            <label for="ich_rp">Исполнительный чертеж:</label>
+            <input class="form-control" name="ich_rp" />
+        </div> 
+        <button id="saving_rp" type="button" class="btn btn-outline-info">Сохранить</button>
+        </form>
+    </div>
+
+        <div id="dialog_poisk" title="Объекты" style="display:none">
+              <div class="form-group">
+                 <!-- <div id="scrollbox" > -->
+        <input type="text" class="form-control pull-right" id="search">
+    </div>
+    <br>
+                <table class="table table-striped" id="mytable" cellspacing="0" style="width: 100%;">
+                  
+                    <thead>
+                        <tr role="row">
+                          <th>id</th>
+                            <th>Тип объекта</th>                            
+                            <th>Номер маршрута</th>              
+                            <th>Баланс</th>
+                            <th>Исполнительный чертеж</th>
+                            <!-- <th>Категория</th> -->
+                        </tr>
+                    </thead>
+                    <!-- <ul> -->
+                    <tbody id="item_row">
+                       <!-- <tr> -->
+      
+                    </tbody>
+                   <!-- </ul>  -->
+                </table>
+                 <button id="close_poisk" type="button" class="btn btn-outline-info">Закрыть</button>
+    <!-- </div> -->
+    </div>
+
+    <div id="dialog_dist" title="Районы" style="display:none">
+       <!-- <div class="form-group"> -->
+        <!-- <table class="table table-striped" id="mytable2" cellspacing="0" style="width: 100%;"> -->
+            <!-- <tbody id="item_row"> -->
+            <input type="checkbox" value="Адмиралтейский">Адмиралтейский&emsp;&ensp;
+             <input type="checkbox" value="Василеостровский">Василеостровский
+              <input type="checkbox" value="Выборгский">Выборгский
+               <input type="checkbox" value="Калининский">Калининский
+                <input type="checkbox" value="Кировский">Кировский
+                 <input type="checkbox" value="Колпинский">Колпинский<br /> 
+                  <input type="checkbox" value="Красногвардейский">Красногвардейский&nbsp;
+                   <input type="checkbox" value="Красносельский">Красносельский
+                    <input type="checkbox" value="Кронштадский">Кронштадский
+                     <input type="checkbox" value="Курортный">Курортный
+                      <input type="checkbox" value="Московский">Московский
+                       <input type="checkbox" value="Невский">Невский<br /> 
+                        <input type="checkbox" value="Петроградский">Петроградский
+                         <input type="checkbox" value="Петродворцовый">Петродворцовый
+                          <input type="checkbox" value="Приморский">Приморский
+                           <input type="checkbox" value="Пушкинский">Пушкинский
+                            <input type="checkbox" value="Фрунзенский">Фрунзенский
+                             <input type="checkbox" value="Центральный">Центральный<br />
+
+                      <label class="checkbox"><input type="checkbox" id="checkbox"> Отметить/снять все
+                      <!-- </tbody> -->
+                      <!-- </table> -->
+        </div> 
+    </div>
+
+
+
+    <div id="map" ></div>  
+
+   
+
+  </body>
+</html>
+            
+     <!-- <nav class="navbar navbar-expand-lg fixed-top "> 
+     <div class="collapse navbar-collapse " id="navbarSupportedContent">
+          <ul class="navbar-nav mr-4"> 
+              <li class="nav-item">
+                  <a class="nav-link " href="#" onclick='needadd=0'><img src="images/home.png"></a>
+                </li> 
+                <li class="nav-item">
+                  <a class="nav-link " href="#" onclick='needadd=1'><img src="images/gas.png"></a>
+                </li> 
+              <li class="nav-item">
+                  <a class="nav-link " href="#" onclick='needadd=2;AreaLineAdd()'><img src="images/polygon.png"></a>
+                </li> 
+                <li class="nav-item">
+                  <a class="nav-link " href="#"onclick='needadd=3'><img src="images/save.png"></a>
+                </li> 
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle btn-block" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Выберите район
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#" onclick='GoToPlace(59.916825, 30.297542,14,1)'>Адмиралтейский</a>
+                <a class="dropdown-item" href="#" onclick='GoToPlace(59.941425, 30.248045,14,2)'>Василеостровский</a>
+                <a class="dropdown-item" href="#" onclick='GoToPlace(60.086515, 30.229019,13,3)'>Выборгский</a>
+                <a class="dropdown-item" href="#" onclick='GoToPlace(59.997685, 30.396824,13,4)'>Калининский</a>
+                <a class="dropdown-item" href="#" onclick='GoToPlace(59.876391, 30.257603,13,5)'>Кировский</a>
+                <a class="dropdown-item" href="#" onclick='GoToPlace(59.775082, 30.595792,13,6)'>Колпинский</a>
+                <a class="dropdown-item" href="#" onclick='GoToPlace(59.964458, 30.460398,13,7)'>Красногвардейский</a>
+                <a class="dropdown-item" href="#" onclick='GoToPlace(59.790793, 30.121823,13,8)'>Красносельский</a>
+                <a class="dropdown-item" href="#" onclick='GoToPlace(60.013056, 29.714374,13,9)'>Кронштадский</a>
+                <a class="dropdown-item" href="#" onclick='GoToPlace(60.093070, 30.007351,13,10)'>Курортный</a>
+                <a class="dropdown-item" href="#" onclick='GoToPlace(59.852176, 30.323073,13,11)'>Московский</a>
+                <a class="dropdown-item" href="#" onclick='GoToPlace(59.881932, 30.464602,13,12)'>Невский</a>
+                <a class="dropdown-item" href="#" onclick='GoToPlace(59.966381, 30.284580,14,13)'>Петроградский</a>
+                <a class="dropdown-item" href="#" onclick='GoToPlace(59.868464, 29.949239,14,14)'>Петродворцовый</a>
+                <a class="dropdown-item" href="#" onclick='GoToPlace(60.017715, 30.185145,13,15)'>Приморский</a>
+                <a class="dropdown-item" href="#" onclick='GoToPlace(59.696674, 30.421276,13,16)'>Пушкинский</a>
+                <a class="dropdown-item" href="#" onclick='GoToPlace(59.854111, 30.413919,13,17)'>Фрунзенский</a>
+                <a class="dropdown-item" href="#" onclick='GoToPlace(59.930908, 30.361817,13,18)'>Центральный</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li> 
+            <li class="nav-item">
+              <a class="nav-link " href="#">Login</a>
+            </li> 
+          </ul>  
+        </div>  
+     </nav>  -->
+     
